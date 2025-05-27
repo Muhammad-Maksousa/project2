@@ -11,5 +11,6 @@ router.post("/year", apiHandler(verifyAdminToken), apiHandler(controller.createY
 router.put("/", apiHandler(verifyAdminToken), apiHandler(controller.update));
 
 router.get("/cities", apiHandler(verifyToken), apiHandler(controller.getCities));
+router.get("/years", apiHandler(verifyToken), apiHandler(controller.getYears));
 
 module.exports = router;

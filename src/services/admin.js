@@ -62,5 +62,8 @@ class AdminService {
     async createYear(value) {
         return await eYear.create({ value: value });
     }
+    async getYears() {
+        return await eYear.findAll({ attributes: ['id', 'value'] });
+    }
 }
 module.exports = AdminService;

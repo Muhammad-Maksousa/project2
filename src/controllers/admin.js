@@ -26,8 +26,12 @@ module.exports = {
         responseSender(res, result);
     },
     createYear: async (req, res) => {
-        const {body} = req;
+        const { body } = req;
         const result = await new AdminService({}).createYear(body.value);
-        responseSender(res,result);
+        responseSender(res, result);
+    },
+    getYears: async (req, res) => {
+        const result = await new AdminService({}).getYears();
+        responseSender(res, result);
     }
 };
