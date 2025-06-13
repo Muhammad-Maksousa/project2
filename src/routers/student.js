@@ -1,6 +1,7 @@
 const router = require("express").Router();
 const controller = require("../controllers/student");
 const { verifyToken, verifyAdminToken } = require("../middleware/auth");
+//const { checkCache } = require("../middleware/cache");
 const apiHandler = require("../helpers/wrappers/api-handler");
 
 
@@ -10,6 +11,7 @@ router.put("/", apiHandler(verifyToken), apiHandler(controller.update));
 router.put("/mark", apiHandler(verifyToken), apiHandler(controller.updateMark));
 
 router.get("/", apiHandler(verifyToken), apiHandler(controller.getAll));
+//router.get("/:eYearId/:certTypeId/:number", apiHandler(checkCache), apiHandler(controller.getOne));
 router.get("/:eYearId/:certTypeId/:number", apiHandler(controller.getOne));
 
 

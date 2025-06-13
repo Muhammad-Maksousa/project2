@@ -26,6 +26,8 @@ module.exports = {
     getOne: async (req, res) => {
         const { eYearId, certTypeId, number } = req.params;
         const student = await new StudentService({}).getOne(eYearId, certTypeId, number);
+        // TODO  put redisClient in try catch
+        //await req.redisClient.setex(req.path, 3600, JSON.stringify(student));
         responseSender(res, student);
     },
     delete: async (req, res) => {
@@ -46,7 +48,7 @@ module.exports = {
         const { body } = req;
         if (Number(body.mark) == NaN)
             throw new CustomError(errors.Mark_Invalid);
-        const marks = await new StudentMarkService({}).updateMark(body.id, body.mark,body.studentId);
+        const marks = await new StudentMarkService({}).updateMark(body.id, body.mark, body.studentId);
         await new StudentService({}).updateTotalMarks(body.studentId, marks);
         updateResponseSender(res, "Mark");
     }
