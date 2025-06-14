@@ -8,6 +8,6 @@ router.post("/", apiHandler(verifyAdminToken), apiHandler(controller.create));
 
 router.put("/", apiHandler(verifyAdminToken), apiHandler(controller.update));
 
-router.get("/", apiHandler(verifyToken), apiHandler(controller.getAll));
+router.get("/", apiHandler(controller.getAll));
 
 module.exports = router;
