@@ -1,10 +1,10 @@
 {
   "port": 8080,
   "db": {
-    "host": "localhost",
-    "database": "project2",
-    "username": "root",
-    "password": "12345",
+    "host": "bl5b0cxq3mg1wesmz02k-mysql.services.clever-cloud.com",
+    "database": "bl5b0cxq3mg1wesmz02k",
+    "username": "u9iht9flr2z044nt",
+    "password": "9WEO4ufjCPWskM2C2qR2",
     "dialect":"mysql"
   }
 }
