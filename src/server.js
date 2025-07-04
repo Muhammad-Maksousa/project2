@@ -2,8 +2,10 @@ const express = require("express");
 const sequelize = require("./helpers/db/init");
 const { port } = require("../configs.json");
 const logger = require('morgan');
+const https = require("https");
+const fs = require("fs");
 const cors = require('cors');
-const app = express();
+let app = express();
 const models = require("./models");
 const path = require('path');
 app.use(express.static(path.join(__dirname, "../public")));
@@ -26,6 +28,13 @@ sequelize.sync({ alter: false }).then((_) => {
     app.use(express.json({}));
     app.use(require("./routers"));
     app.use(require("./helpers/errors/custom-errors").defaultHandler);
+    app = https.createServer(
+        {
+            key: fs.readFileSync(path.join(__dirname, '../cert/key.pem')),
+            cert: fs.readFileSync(path.join(__dirname, '../cert/cert.pem'))
+        },
+        app
+    );
     app.listen(port, () => {
         console.log(`Server is listening on ${port}`);
         

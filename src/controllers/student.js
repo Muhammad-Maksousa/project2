@@ -27,7 +27,12 @@ module.exports = {
         const { eYearId, certTypeId, number } = req.params;
         const student = await new StudentService({}).getOne(eYearId, certTypeId, number);
         // TODO  put redisClient in try catch
-        //await req.redisClient.setex(req.path, 3600, JSON.stringify(student));
+       /* try {
+            await req.redisClient.set(req.path, JSON.stringify(student), "EX",300);
+        } catch (error) {
+            console.log(error);
+            console.log("Redis Server Is Down.")
+        }*/
         responseSender(res, student);
     },
     delete: async (req, res) => {

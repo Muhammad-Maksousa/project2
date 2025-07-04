@@ -1,7 +1,7 @@
 const router = require("express").Router();
 const controller = require("../controllers/student");
 const { verifyToken, verifyAdminToken } = require("../middleware/auth");
-//const { checkCache } = require("../middleware/cache");
+const { checkCache } = require("../middleware/cache");
 const apiHandler = require("../helpers/wrappers/api-handler");
 
 
